@@ -58,7 +58,7 @@ app.get("*", (req, res) => {
 
 });
 
-require('./app/components/Routes.js')(app, passport);
+require('./app/components/Routes.js');
 
 app.listen(port, () => {
 	console.log("App is listening on port", port);
