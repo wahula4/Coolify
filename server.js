@@ -4,10 +4,9 @@ let express = require("express"),
 	  port = process.env.PORT || 8080,
 	  morgan = require("morgan"),
 	  path = require("path"),
-    passport = require("passport"),
+      passport = require("passport"),
 	  session = require("express-session"),
     mongoose = require("mongoose");
-
 mongoose.Promise = global.Promise;
 
 mongoose.connect("mongodb://localhost/zoo");
@@ -19,11 +18,11 @@ db.once("open", function () {
 });
  db.on("error", function (err) {
       console.log("Mongoose Error: ", err);
- });
+});
 
- app.use(morgan("dev"));
- app.use(bodyParser.json()); // get information from html forms
- app.use(bodyParser.urlencoded({ extended: true }));
+app.use(morgan("dev"));
+app.use(bodyParser.json()); // get information from html forms
+app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(express.static('public'));
 require("./passport")(passport);
@@ -32,34 +31,39 @@ require("./passport")(passport);
 app.use(session({
 	secret:'ilovepassports',
 	resave: true,
-  saveUninitialized: true
+    saveUninitialized: true
 }));
 
 app.use(passport.initialize());
 app.use(passport.session());
 
-app.post('/signup', passport.authenticate('local-signup', {
-    failureRedirect: '/'
-}), function (req, res) {
 
-    res.json({message:"Ok"})
+
+app.post('/signup', passport.authenticate('local-signup', {}), function (req, res) {
+	res.json({message:'Ok'});
 });
 
-app.post("/signin", (req, res) => {
 
-	console.log(req.body);
 
-	res.redirect("/dashboard");
+app.post('/signin', passport.authenticate('local-login', {}), function (req, res) {
+	res.redirect("/main")
 });
+
+
 
 app.get("*", (req, res) => {
-
-	res.sendFile(path.join(__dirname, "./public/index.html"));
-
+	res.sendFile(path.join(__dirname, "./public/index.html")); // Single App
 });
 
-// require('./app/components/Routes.js');
 
 app.listen(port, () => {
 	console.log("App is listening on port", port);
-});
+})
+
+
+
+
+
+
+
+
