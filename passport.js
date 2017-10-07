@@ -46,10 +46,12 @@ module.exports = function(passport) {
 
                 // if no user is found, return the message
                 if (!user)
-                    return done(null, false, {message:"No user found!!"});
+                    return done("No user found!!!", false, {message:"No user found!!"});
 
-                if (!user.validPassword(password))
-                    return done(null, false, {message:'Password not valid'});
+                if (!user.validPassword(password)){
+                    console.log("From Passport: ", err);
+                    return done("Password not valid", false, {message:'Password not valid'});
+                }
 
                 // all is well, return user
                 else

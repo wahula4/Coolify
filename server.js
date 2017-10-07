@@ -24,6 +24,8 @@ app.use(morgan("dev"));
 app.use(bodyParser.json()); // get information from html forms
 app.use(bodyParser.urlencoded({ extended: true }));
 
+
+
 app.use(express.static('public'));
 require("./passport")(passport);
 
@@ -46,7 +48,8 @@ app.post('/signup', passport.authenticate('local-signup', {}), function (req, re
 
 
 app.post('/signin', passport.authenticate('local-login', {}), function (req, res) {
-	res.redirect("/main")
+	console.log(JSON.stringify(req.err));
+	res.json({message:"Ok"})
 });
 
 
