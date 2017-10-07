@@ -9,7 +9,7 @@
     "open:webpack": "webpack -w",
     "open:react": "nodemon server.js"
   },
-  "author": "Ahmed Haque",
+  "author": "Tony",
   "license": "ISC",
   "dependencies": {
     "axios": "^0.12.0",
