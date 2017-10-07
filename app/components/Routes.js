@@ -10,7 +10,7 @@ var Route = router.Route;
 var Router = router.Router;
 // Include the hashHistory prop to handle routing client side without a server
 // https://github.com/ReactTraining/react-router/blob/master/docs/guides/Histories.md#hashhistory
-var browserHistory = router.browserHistory;
+var hashHistory = router.hashHistory;
 // Include the IndexRoute (catch-all route)
 var IndexRoute = router.IndexRoute;
 // Reference the high-level components
@@ -21,12 +21,16 @@ var Dashboard = require ("./Dashboard");
 
 
 module.exports = (
-    <Router history={browserHistory}>
-        <Route path="/">
-            <Route path = "signin" component={Signin}/>
-            <Route path = "dashboard" component={Dashboard}/>
+    <Router history={hashHistory}>
+       <Route path="/" component={Dashboard}>
+         {/* If user selects Child1 then show the appropriate component*/}
+         <Route path="login" component={Signin} >
 
-            <IndexRoute component={Signup}/>
-        </Route>
+         </Route>
+         {/* If user selects Child2 then show the appropriate component*/}
+         <Route path="signup" component={Signup} />
+         {/* If user selects any other path... we get the Home Route */}
+         <IndexRoute component={Main} />
+       </Route>
     </Router>
 );
