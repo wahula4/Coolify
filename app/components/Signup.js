@@ -1,21 +1,22 @@
 import React from "react";
 
+import {Button, Row, Input } from 'react-materialize';
+
 class Signup extends React.Component{
 
     render(){
         return(
-            <div>
-                <h2>Please sign up</h2>
-                <form action="/signup" method="POST">
-                    <input type="email" name="email"/><br/>
-                    <input type="password" name="password"/><br/>
-
-                    <input type="submit" value='Sign Up'/>
-                </form>
-            </div>
+          <Row>
+              <h3>Please Sign Up</h3>
+              <form action="/signup" method="POST">
+              <Input type="email" s={6} name="email" label="Email"/>
+              <Input type="password" s={6} name="password" label="Password"/>
+              <Button type="submit">Submit</Button>
+              </form>
+          </Row>
         );
 
     }
 }
 
-export default Signup
+export default Signup;
