@@ -1,5 +1,6 @@
 // Include React
 import React from "react";
+import Moment from "moment";
 
 import {CardPanel, Row, Col } from 'react-materialize';
 // This is the History component. It will be used to show a log of  recent searches.
@@ -16,10 +17,11 @@ class History extends React.Component {
     				<CardPanel className="teal lighten-4 black-text">
     						<h1>History:</h1>
                 {this.props.history.map(function(search, i) {
-            return (
-              <p key={i}>{search.location} - {search.date}</p>
-            );
-          })}
+                  var formatted_date = Moment(search.date).format("MMM Do YYYY");
+                    return (
+                      <p key={i}>{search.location} - {formatted_date}</p>
+                    );
+                })}
     				</CardPanel>
     		</Col>
       </Row>

@@ -8,6 +8,9 @@ class Signup extends React.Component{
         return(
           <Row>
               <h3>Please Sign Up</h3>
+
+              
+
               <form action="/signup" method="POST">
               <Input type="email" s={6} name="email" label="Email"/>
               <Input type="password" s={6} name="password" label="Password"/>
