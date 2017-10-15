@@ -44,25 +44,27 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
-
-
 app.post('/signup', passport.authenticate('local-signup',
- 			{successRedirect: '/main',
-			 failureRedirect: '/signup',
-			 failureFlash: true }), function (req, res) {
+ 			{successRedirect: '/main' }), function (req, res) {
+				 console.log(JSON.stringify(req.err));
 				//  res.json({message:'Ok'});
 });
 
-
-
 app.post('/signin', passport.authenticate('local-login',
-			{successRedirect: '/main',
-			 failureRedirect: '/signin',
-       failureFlash: true }
+		{successRedirect: '/main'}
 		 ), function (req, res) {
-				 console.log(JSON.stringify(req.err));
-				//  res.json({message:"Ok"})
+				// 	console.log(req.user)
 });
+
+// app.get("/user", function(req, res) {
+// 	console.log(req.user);
+// 	console.log(req.cookies);
+// 	res.send({
+// 		user: "Whatever",
+// 		email: req.user || req.user.username,
+// 		foo: "bar"
+// 	})
+// });
 
 // This is the route we will send GET requests to retrieve our most recent search data.
 // We will call this route the moment our page gets rendered

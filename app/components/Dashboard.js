@@ -8,10 +8,10 @@ class Dashboard extends React.Component{
         return(
         <Row>
           <Col m={6} offset="m3">
-              <Card className='small'
+              <Card className='center medium'
               header={<CardTitle image='http://materializecss.com/images/parallax2.jpg'>Welcome</CardTitle>}
-              actions={[<Button node='a' href='/signin' class="waves-effect waves-light">Login</Button>,
-                        <Button node='a' href='/signup' class="waves-effect waves-light">Signup</Button>]}>
+              actions={[<Button className="green" node='a' href='/signin' waves="light">Login</Button>,
+                        <Button node='a' href='/signup' waves="light">Signup</Button>]}>
               Log in or sign up to learn!
             </Card>
           </Col>

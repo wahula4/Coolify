@@ -72,6 +72,8 @@ module.exports = function(passport) {
     },
     function(req, email, password, done) {
         console.log("Checking with password: ", email)
+
+
         if (email)
             email = email.toLowerCase(); // Use lower-case e-mails to avoid case-sensitive e-mail matching
 
@@ -86,7 +88,7 @@ module.exports = function(passport) {
 
                     // check to see if theres already a user with that email
                     if (user) {
-                        return done(null, false, {message:"OK"});
+                        return done(null, false, {message:"user exists already"});
                     } else {
 
                         // create the user
