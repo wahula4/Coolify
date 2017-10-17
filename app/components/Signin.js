@@ -11,33 +11,20 @@ class Signin extends React.Component{
     this.user={email:"", password:""}
   }
 
-  signin()
-  {
+  signin() {
     fetch('./signin', {
       method: "POST",
       headers: { "Content-Type" : "application/json" },
+      credentials: "include",
       body: JSON.stringify(this.user)
-}).then(function(response) {
-    console.log(response)
-      if(response.ok)
-      {
-        // fetch('/user', {
-      //   method: "GET",
-      //   headers: { "Content-Type" : "application/json" },
-      //   credentials: "include"
-      // }).then(function(response) {
-      //   console.log(response)
-      //   response.json().then(function(json) {
-      //     console.log(json);
-      //   });
-      // });
-      window.location.assign("./main")
-      }
-      else if(response.status !== 304) {
+    }).then(function(response) {
+      console.log(response)
+      if (response.status === 401) {
         alert('Incorrect email or password')
+      } else {
+        window.location.assign("./main")
       }
-    })
-    .catch(function(error) { console.log(error); });
+    });
   }
 
   emailchange(event)
@@ -49,6 +36,7 @@ class Signin extends React.Component{
   {
     this.user.password=event.target.value;
   }
+
     render(){
         return(
           <Row>

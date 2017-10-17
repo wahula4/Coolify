@@ -6,16 +6,30 @@ import History from "./children/History";
 // Helper Function
 import helpers from "./utils/helpers";
 
-import {Button, Modal, Parallax, Row, Col, Carousel } from 'react-materialize';
+import {Button, Modal, Parallax, Row, Col, Carousel, Preloader } from 'react-materialize';
 
 class Main extends React.Component {
   constructor(props) {
     super(props);
+    var self = this;
     this.state = {
       searchTerm: "",
       results: "",
       history: []
     };
+    fetch('/user', {
+    method: "GET",
+    headers: { "Content-Type" : "application/json" },
+    credentials: "include"
+  }).then(function(response) {
+      console.log(response);
+      response.json().then(function(json) {
+        console.log(json);
+        self.state.email = json.email;
+      });
+    });
+
+    this.signout=this.signout.bind(this)
   }
 
   // The moment the page renders get the History
@@ -23,9 +37,6 @@ class Main extends React.Component {
     var self = this;
     // Get the latest history.
     helpers.getHistory().then(function(response) {
-      // console.log("getHistory response:");
-      // if (response !== this.state.history) {
-      //   console.log("History", response.data);
       self.setState({ history: response.data });
       // }
     });
@@ -60,13 +71,27 @@ class Main extends React.Component {
     });
   }
 
+  signout()
+  {
+    this.state.user = {};
+    window.location.assign("/")
+  }
+
+
   render() {
+    var userElement;
+    if (this.state.email) {
+      userElement = <p className="right">{this.state.email} <Button type="submit" onClick={this.signout}>Signout</Button></p>
+    }
+    else {
+      userElement = <Preloader className="right" size='small'/>
+    }
+
     return (
       <div>
         <div className="section white">
-      		<div className="row container">
-            {/* <p>{this.state.user.email}</p> */}
-            <p id="user-email"></p>
+          {userElement}
+      		<div className="row container center">
       			<h2 className="header">COOLIFY</h2>
       			<p className="grey-text text-darken-3 lighten-3">Parents can be cool too</p>
       		</div>
@@ -95,7 +120,7 @@ class Main extends React.Component {
             	'https://lorempixel.com/250/250/nature/2',
             	'https://lorempixel.com/250/250/nature/3',
             	'https://lorempixel.com/250/250/nature/4',
-            	'https://lorempixel.com/250/250/nature/5'
+            	'https://fckwhatyouheard.files.wordpress.com/2011/04/betty-white.jpg'
             ]} />
       		</div>
       	</div>

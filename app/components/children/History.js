@@ -15,7 +15,7 @@ class History extends React.Component {
       <Row>
     		<Col>
           <Collapsible accordion>
-          	<CollapsibleItem header='History' icon='filter_drama'>
+          	<CollapsibleItem header='Recent Searches' icon='filter_drama'>
               {this.props.history.map(function(search, i) {
                 var formatted_date = Moment(search.date).format("MMM Do YYYY");
                   return (

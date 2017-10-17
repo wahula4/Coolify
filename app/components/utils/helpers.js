@@ -10,7 +10,8 @@ const helpers = {
         if (response.data.list.length  < 1) {
           return "No results found!"
         } else {
-          return "Word: " + response.data.list[0].word + "Definition: " + response.data.list[0].definition + "\nExample: " + response.data.list[0].example;
+          return response.data.list[0].definition;
+          //  + "Example: " + response.data.list[0].example;
         }
       }
     });

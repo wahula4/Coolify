@@ -8,6 +8,7 @@ let express = require("express"),
 	  session = require("express-session"),
     mongoose = require("mongoose");
 		flash = require("connect-flash");
+		cookieParser = require("cookie-parser");
 
 var History = require("./models/History");
 
@@ -33,7 +34,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(express.static('public'));
 require("./passport")(passport);
-
+app.use(cookieParser()); // read cookies (needed for auth)
 
 app.use(session({
 	secret:'ilovepassports',
@@ -53,17 +54,21 @@ app.post('/signup', passport.authenticate('local-signup',
 app.post('/signin', passport.authenticate('local-login',
 		{successRedirect: '/main'}
 		 ), function (req, res) {
-				// 	console.log(req.user)
+					// console.log(req.user)
 });
 
-// app.get("/user", function(req, res) {
-// 	console.log(req.user);
-// 	console.log(req.cookies);
-// 	res.send({
-// 		user: "Whatever",
-// 		email: req.user || req.user.username,
-// 		foo: "bar"
-// 	})
+app.get("/user", function(req, res) {
+	if (!req.user) {
+		res.send({});
+	} else {
+		res.send({
+			email: req.user.local.email
+		});
+	}
+});
+
+// app.post("/user", function(req, res) {
+// 	console.log("hello", req.user)
 // });
 
 // This is the route we will send GET requests to retrieve our most recent search data.
