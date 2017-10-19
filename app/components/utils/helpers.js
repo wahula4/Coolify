@@ -3,8 +3,8 @@ import axios from "axios";
 // Helper Functions (in this case the only one is runQuery)
 const helpers = {
 
-  runQuery: function(location) {
-    var queryURL = "http://api.urbandictionary.com/v0/define?term=" + location;
+  runQuery: function(word) {
+    var queryURL = "http://api.urbandictionary.com/v0/define?term=" + word;
     return axios.get(queryURL).then(function(response) {
       if (response) {
         if (response.data.list.length  < 1) {
@@ -22,8 +22,8 @@ const helpers = {
   },
 
   // This function posts new searches to our database.
-  postHistory(location) {
-    return axios.post("/api", { location: location });
+  postHistory(word) {
+    return axios.post("/api", { word: word });
   }
 
 };

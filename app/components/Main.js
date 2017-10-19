@@ -5,8 +5,9 @@ import Results from "./children/Results";
 import History from "./children/History";
 // Helper Function
 import helpers from "./utils/helpers";
+// import billboardTop5 from "../../public/billboard"
 
-import {Button, Modal, Parallax, Row, Col, Carousel, Preloader } from 'react-materialize';
+import {Button, Modal, Parallax, Row, Col, Carousel, Preloader, Slider, Slide } from 'react-materialize';
 
 class Main extends React.Component {
   constructor(props) {
@@ -104,7 +105,7 @@ class Main extends React.Component {
                 updateHistoryWithNewSearch={(term) => this.updateHistoryWithNewSearch(term)} />
             </Col>
             <Col s={6} className='grid-example'>
-              <Results address={this.state.results} />
+              <Results definition={this.state.results} />
             </Col>
             <Row>
             <History history={this.state.history} />
@@ -113,8 +114,8 @@ class Main extends React.Component {
       	</div>
       	<Parallax imageSrc="http://materializecss.com/images/parallax2.jpg"/>
         <div className="section white">
-      		<div className="row container">
-      			<h2 className="header">Songs cool people know</h2>
+      		<div className="row container center">
+      			<h2 className="header">Songs you should know</h2>
             <Carousel images={[
             	'https://lorempixel.com/250/250/nature/1',
             	'https://lorempixel.com/250/250/nature/2',
@@ -124,6 +125,32 @@ class Main extends React.Component {
             ]} />
       		</div>
       	</div>
+        <div className="section white">
+          <div className="row container center">
+            <h1>People you should know</h1>
+                <Slider>
+                	<Slide
+                		src="http://img.etonline.com/1242911076001/201604/2937/1242911076001_4848888244001_ET-BEYONCE-0416-horiz.jpg?pubId=1242911076001"
+                		title="Beyonce"
+                    placement="right">
+                		Also known as Queen Bey.  One of the most powerful women in entertainment selling millions of music albums worldwide.
+                	</Slide>
+                	<Slide
+                		src="http://22928-presscdn.pagely.netdna-cdn.com/wp-content/uploads/2017/06/USATSI_10090701_168383719_lowres-640x427.jpg"
+                		title="LeBron James"
+                		placement="left">
+                		Brought an NBA championship back to the city of Cleveland on his quest to become the GOAT.
+                	</Slide>
+                	<Slide
+                		src="http://www.billboard.com/files/styles/480x270/public/media/taylor-swift-49th-billboard-1548.jpg"
+                		title="Taylor Swift"
+                		placement="right">
+                		Country singer/songwriter turned pop star, she's known for singing about her personal life.
+                	</Slide>
+                </Slider>
+          </div>
+        </div>
+
       </div>
     );
   }

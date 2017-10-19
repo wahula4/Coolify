@@ -54,7 +54,6 @@ app.post('/signup', passport.authenticate('local-signup',
 app.post('/signin', passport.authenticate('local-login',
 		{successRedirect: '/main'}
 		 ), function (req, res) {
-					// console.log(req.user)
 });
 
 app.get("/user", function(req, res) {
@@ -66,10 +65,6 @@ app.get("/user", function(req, res) {
 		});
 	}
 });
-
-// app.post("/user", function(req, res) {
-// 	console.log("hello", req.user)
-// });
 
 // This is the route we will send GET requests to retrieve our most recent search data.
 // We will call this route the moment our page gets rendered
@@ -88,11 +83,10 @@ app.get("/api", function(req, res) {
 });
 // This is the route we will send POST requests to save each search.
 app.post("/api", function(req, res) {
-  console.log("BODY: " + req.body.location);
-  // Here we'll save the location based on the JSON input.
+  // Here we'll save the word based on the JSON input.
   // We'll use Date.now() to always get the current date time
   History.create({
-    location: req.body.location,
+    word: req.body.word,
     date: Date.now()
   }, function(err) {
     if (err) {

@@ -1,4 +1,5 @@
 import React from "react";
+// var top5 = require("../../public/billboard")
 
 import { Card, CardTitle, Button, Col, Row } from 'react-materialize';
 
@@ -22,10 +23,10 @@ class Dashboard extends React.Component{
         <Row>
           <Col m={6} offset="m3">
               <Card className='center medium'
-              header={<CardTitle image='http://materializecss.com/images/parallax2.jpg'>Welcome</CardTitle>}
+              header={<CardTitle image='./images/rock.jpg'>Welcome</CardTitle>}
               actions={[<Button className="green" type="submit" waves="light" onClick={this.dashSignIn}>Login</Button>,
                         <Button type="submit" waves="light" onClick={this.dashSignIn}>Signup</Button>]}>
-              Log in or sign up to learn!
+              Been living under a rock? You're in the right place!
             </Card>
           </Col>
         </Row>

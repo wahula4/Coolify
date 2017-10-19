@@ -19,7 +19,7 @@ class History extends React.Component {
               {this.props.history.map(function(search, i) {
                 var formatted_date = Moment(search.date).format("MMM Do YYYY");
                   return (
-                    <p key={i}>{search.location} - {formatted_date}</p>
+                    <p key={i}>{search.word} - {formatted_date}</p>
                   );
               })}
           	</CollapsibleItem>

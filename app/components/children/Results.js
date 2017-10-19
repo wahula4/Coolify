@@ -10,7 +10,7 @@ class Results extends React.Component {
           <h3 className="panel-title text-center">Definition</h3>
         </div>
         <div className="panel-body text-center">
-          <p>{this.props.address}</p>
+          <p>{this.props.definition}</p>
         </div>
       </div>
     );
