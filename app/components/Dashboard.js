@@ -21,6 +21,7 @@ class Dashboard extends React.Component{
     render(){
         return(
         <Row>
+          <h1>hello</h1>
           <Col m={6} offset="m3">
               <Card className='center medium'
               header={<CardTitle image='./images/rock.jpg'>Welcome</CardTitle>}
