@@ -28,7 +28,7 @@ class Form extends React.Component {
     return (
       <div className="panel panel-default">
         <div className="panel-heading">
-          <h3 className="panel-title text-center">Say What?</h3>
+          <h4 className="panel-title text-center">Say What?</h4>
         </div>
         <div className="panel-body text-center">
           <form onSubmit={(event) => { this.handleSubmit(event) }}>

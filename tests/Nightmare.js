@@ -1,15 +1,13 @@
-// import sinon from 'sinon';
 var Nightmare = require('nightmare');
 var nightmare = Nightmare({
   show: true,
-  executionTimeout: 2000
+  executionTimeout: 1000
 });
 const test = () => {
   nightmare
-  .goto('http://localhost:8080/')
-  .type('#term', 'This is a test')
+  .goto('http://localhost:8080/main')
+  .type('#term', 'This is whatever')
   .click('.btn-primary')
-  // .wait('.collapsible-body p')
   .evaluate(function () {
     return document.querySelector('.collapsible-body p').textContent;
   })
@@ -23,14 +21,12 @@ const test = () => {
   });
 }
 test()
-
 const second = () => {
   nightmare
     .goto('http://localhost:8080/signin')
-    .type('#input_0', 'tony@mail.com')
-    .type('#input_1', '123456')
+    .type('#input_0', 'thisIsAUser')
+    .type('#input_1', '444444')
     .click('button')
-    // .wait()
     .end()
     .then(function (result) {
       console.log(typeof result);

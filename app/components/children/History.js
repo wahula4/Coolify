@@ -13,7 +13,7 @@ class History extends React.Component {
     console.log(this.props.history)
     return (
       <Row>
-    		<Col>
+    		<Col m={4}>
           <Collapsible accordion>
           	<CollapsibleItem header='Recent Searches' icon='filter_drama'>
               {this.props.history.map(function(search, i) {

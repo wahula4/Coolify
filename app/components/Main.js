@@ -7,7 +7,7 @@ import History from "./children/History";
 import helpers from "./utils/helpers";
 // import billboardTop5 from "../../public/billboard"
 
-import {Button, Modal, Parallax, Row, Col, Carousel, Preloader, Slider, Slide } from 'react-materialize';
+import {Button, Modal, Parallax, Row, Col, Carousel, Preloader, Slider, Slide, Footer, Collection, CollectionItem } from 'react-materialize';
 
 class Main extends React.Component {
   constructor(props) {
@@ -82,7 +82,7 @@ class Main extends React.Component {
   render() {
     var userElement;
     if (this.state.email) {
-      userElement = <p className="user right">{this.state.email} <Button type="submit" onClick={this.signout}>Signout</Button></p>
+      userElement = <p className="user right">{this.state.email} <a type="submit" onClick={this.signout}>Signout</a></p>
     }
     else {
       userElement = <Preloader className="right" size='small'/>
@@ -93,41 +93,45 @@ class Main extends React.Component {
         <div className="section white">
           {userElement}
       		<div className="row container center">
-      			<h2 className="header">COOLIFY</h2>
-      			<p className="grey-text text-darken-3 lighten-3">Parents can be cool too</p>
+
+      			<h1 className="header animated bounceInDown">Coolify Yo'self</h1>
+      			<h5 className="grey-text text-darken-3 lighten-3">Even parents can be cool</h5>
+
       		</div>
       	</div>
-      	<Parallax imageSrc="https://img.buzzfeed.com/buzzfeed-static/static/2014-08/4/16/campaign_images/webdr02/21-reminders-you-had-the-cool-parents-growing-up-2-5133-1407184657-11_dblbig.jpg"/>
+      	<Parallax imageSrc="https://img.buzzfeed.com/buzzfeed-static/static/2014-08/4/16/campaign_images/webdr02/21-reminders-you-had-the-cool-parents-growing-up-2-5133-1407184657-11_dblbig.jpg"
+      />
       	<div className="section white">
       		<div className="row container">
-            <Col s={6} className='grid-example'>
+            <h3 className="center">Confused by what the kids are saying? Find out here</h3>
+            <Col m={4} className='grid-example'>
               <Form setTerm={(term) => this.setTerm(term)}
                 updateHistoryWithNewSearch={(term) => this.updateHistoryWithNewSearch(term)} />
             </Col>
-            <Col s={6} className='grid-example'>
+            <Col m={4} className='grid-example'>
               <Results definition={this.state.results} />
             </Col>
-            <Row>
-            <History history={this.state.history} />
-            </Row>
+
+                <History history={this.state.history} />
+
       		</div>
       	</div>
-      	<Parallax imageSrc="http://materializecss.com/images/parallax2.jpg"/>
+      	<Parallax imageSrc="http://images5.fanpop.com/image/photos/30600000/Fonzie-arthur-fonzarelli-30631364-500-291.jpg"/>
         <div className="section white">
       		<div className="row container center">
-      			<h2 className="header">Songs you should know</h2>
-            <Carousel images={[
-            	'https://lorempixel.com/250/250/nature/1',
-            	'https://lorempixel.com/250/250/nature/2',
-            	'https://lorempixel.com/250/250/nature/3',
-            	'https://lorempixel.com/250/250/nature/4',
-            	'https://fckwhatyouheard.files.wordpress.com/2011/04/betty-white.jpg'
-            ]} />
+            <h2>Top Songs Right Now</h2>
+            <Collection>
+            	<CollectionItem target='_blank' href = 'https://www.youtube.com/watch?v=_209r9TMB4M'>Rockstar - Post Malone featuring 21 Savage</CollectionItem>
+            	<CollectionItem target='_blank' href = 'https://www.youtube.com/watch?v=PEGccV-NOm8'>Bodak Yellow - Cardi B</CollectionItem>
+            	<CollectionItem target='_blank' href = 'https://www.youtube.com/watch?v=Kb24RrHIbFk'>1-800-273-8255 - Logic featuring Alessia Cara and Khalid</CollectionItem>
+            	<CollectionItem target='_blank' href = 'https://www.youtube.com/watch?v=3tmd-ClpJxA'>Look What You Made Me Do - Taylor Swift</CollectionItem>
+              <CollectionItem target='_blank' href = 'https://www.youtube.com/watch?v=pBkHHoOIIn8'>Feel it Still - Portugal. The Man</CollectionItem>
+            </Collection>
       		</div>
       	</div>
         <div className="section white">
           <div className="row container center">
-            <h1>People you should know</h1>
+            <h2>People you should know</h2>
                 <Slider>
                 	<Slide
                 		src="http://img.etonline.com/1242911076001/201604/2937/1242911076001_4848888244001_ET-BEYONCE-0416-horiz.jpg?pubId=1242911076001"
@@ -150,7 +154,21 @@ class Main extends React.Component {
                 </Slider>
           </div>
         </div>
-
+          <Footer copyrights="2017 Copyright"
+          	moreLinks={
+          		<a className="grey-text text-lighten-4 right" href="#!">Tony Wahula</a>
+          	}
+          	links={
+          		<ul>
+          			<li><a className="grey-text text-lighten-3" target='_blank' href="https://github.com/wahula4/ES6-Address">The Code</a></li>
+          			<li><a className="grey-text text-lighten-3" target='_blank' href="www.linkedin.com/in/tony-wahula">LinkedIn</a></li>
+          			<li><a className="grey-text text-lighten-3" target='_blank' href="tonywahula.com">Portfolio</a></li>
+          		</ul>
+          	}
+          	className='example'>
+          		<h5 className="white-text">Coolify Inc.</h5>
+          		<p className="grey-text text-lighten-4">Coolify cannot guarantee you will acutally become cooler. Results may vary.</p>
+          </Footer>
       </div>
     );
   }

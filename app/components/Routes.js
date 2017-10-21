@@ -7,9 +7,9 @@ import Signin from './Signin';
 
 const Routes = () => (
     <Router history={browserHistory}>
-       {/* <Route path="/" component={Dashboard}> </Route> */}
+       <Route path="/" component={Dashboard}> </Route>
        <Route path="/signin" component={Signin}> </Route>
-       <Route path="/" component={Main}> </Route>
+       <Route path="/main" component={Main}> </Route>
        <Route path="/signup" component={Signup}> </Route>
     </Router>
 );

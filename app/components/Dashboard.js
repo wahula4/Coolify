@@ -20,20 +20,25 @@ class Dashboard extends React.Component{
 
     render(){
         return(
+
+
         <Row>
-          <h1>hello</h1>
           <Col m={6} offset="m3">
-              {/* <Card className='center medium'
-              header={<CardTitle image='./images/rock.jpg'>Welcome</CardTitle>}
-              actions={[<Button className="green" type="submit" waves="light" onClick={this.dashSignIn}>Login</Button>,
-                        <Button type="submit" waves="light" onClick={this.dashSignIn}>Signup</Button>]}>
-              Been living under a rock? You're in the right place!
-            </Card> */}
+            <div className='center'>
+              <h1 className=' animated tada'>Welcome to Coolify!</h1>
+              Been living under a rock? Feel super uncool? You're in the right place!
+              <p></p>
+              <Button style={{marginRight: 5}} className="green" type="submit" waves="light" onClick={this.dashSignIn}>Login</Button>
+              <Button type="submit" waves="light" onClick={this.dashSignIn}>Signup</Button>
+            </div>
           </Col>
+          <img class="materialboxed" width="450" src="https://media.giphy.com/media/vEgtLzJo8n7qg/giphy.gif"></img>
         </Row>
+
         );
 
     }
 }
+
 
 export default Dashboard;
