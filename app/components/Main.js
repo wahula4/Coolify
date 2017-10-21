@@ -82,7 +82,7 @@ class Main extends React.Component {
   render() {
     var userElement;
     if (this.state.email) {
-      userElement = <p className="right">{this.state.email} <Button type="submit" onClick={this.signout}>Signout</Button></p>
+      userElement = <p className="user right">{this.state.email} <Button type="submit" onClick={this.signout}>Signout</Button></p>
     }
     else {
       userElement = <Preloader className="right" size='small'/>

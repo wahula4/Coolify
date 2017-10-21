@@ -23,12 +23,12 @@ class Dashboard extends React.Component{
         <Row>
           <h1>hello</h1>
           <Col m={6} offset="m3">
-              <Card className='center medium'
+              {/* <Card className='center medium'
               header={<CardTitle image='./images/rock.jpg'>Welcome</CardTitle>}
               actions={[<Button className="green" type="submit" waves="light" onClick={this.dashSignIn}>Login</Button>,
                         <Button type="submit" waves="light" onClick={this.dashSignIn}>Signup</Button>]}>
               Been living under a rock? You're in the right place!
-            </Card>
+            </Card> */}
           </Col>
         </Row>
         );
