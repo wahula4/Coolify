@@ -29,7 +29,7 @@ class Dashboard extends React.Component{
               Been living under a rock? Feel super uncool? You're in the right place!
               <p></p>
               <Button style={{marginRight: 5}} className="green" type="submit" waves="light" onClick={this.dashSignIn}>Login</Button>
-              <Button type="submit" waves="light" onClick={this.dashSignIn}>Signup</Button>
+              <Button type="submit" waves="light" onClick={this.dashSignUp}>Signup</Button>
             </div>
           </Col>
           <img class="materialboxed" width="450" src="https://media.giphy.com/media/vEgtLzJo8n7qg/giphy.gif"></img>
