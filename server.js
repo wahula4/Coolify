@@ -14,7 +14,11 @@ var History = require("./models/History");
 
 mongoose.Promise = global.Promise;
 
-mongoose.connect("mongodb://localhost/project3");
+//development
+// mongoose.connect("mongodb://localhost/project3");
+//heroku
+mongoose.connect("mongodb://heroku_18wsqhw7:fg13p65u89cn7gkd7dka1piknt@ds229465.mlab.com:29465/heroku_18wsqhw7");
+
 
 const db = mongoose.connection;
 
@@ -102,6 +106,12 @@ app.get("*", (req, res) => {
 	res.sendFile(path.join(__dirname, "./public/index.html")); // Single App
 });
 
-app.listen(port, () => {
-	console.log("App is listening on port", port);
-})
+// development
+// app.listen(port, () => {
+// 	console.log("App is listening on port", port);
+// })
+
+//heroku
+app.listen(process.env.PORT || 8080, () => {
+  console.log('Express server is up and running!');
+});

@@ -7,9 +7,7 @@
   "license": "ISC",
   "scripts": {
     "test": "jest --config=jest.config.json",
-    "start": "npm-run-all  --parallel open:webpack open:react",
-    "open:webpack": "webpack -w",
-    "open:react": "nodemon server.js"
+    "start": "node server/server.js"
   },
   "dependencies": {
     "animate.css": "^3.5.2",
